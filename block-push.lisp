@@ -20,7 +20,7 @@
   (,*w1* ,*w2* ,*w3* ,*w1* ,'nil ,*w3* ,*w1* ,*w2* ,*w3*)
   (,*w1* ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,*b2* ,*b1* ,*b1* ,*b1* ,'nil ,*w3*)
-  (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,*f1* ,'nil ,*w3*)
+  (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,'nil ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,'nil ,*b1* ,'nil ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,*b1* ,*b1* ,*b1* ,*b2* ,'nil ,*w3*)
