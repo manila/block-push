@@ -19,11 +19,11 @@
   :initial-contents `(
   (,*w1* ,*w2* ,*w3* ,*w1* ,'nil ,*w3* ,*w1* ,*w2* ,*w3*)
   (,*w1* ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,*w3*)
-  (,*w1* ,'nil ,*b1* ,*b2* ,*b1* ,*b1* ,*b1* ,'nil ,*w3*)
-  (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,'nil ,'nil ,*w3*)
+  (,*w1* ,'nil ,*b1* ,*b1* ,*b1* ,*b1* ,*b1* ,'nil ,*w3*)
+  (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,'nil ,*b1* ,'nil ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,*b1* ,'nil ,*w3*)
-  (,*w1* ,'nil ,*b1* ,*b1* ,*b1* ,*b1* ,*b2* ,'nil ,*w3*)
+  (,*w1* ,'nil ,*b1* ,*b1* ,*b1* ,*b1* ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,*w3*)
   (,*w1* ,*w2* ,*w3* ,*w1* ,*w2* ,*w3* ,*w1* ,*w2* ,*w3*)))
 )
@@ -46,15 +46,23 @@
     (lambda () (move-player -1 0))))
 
 (defun move-player(ud lr)
-	(if (collides (+ *player-x* ud) (+ *player-y* lr))
-                   ()
-                   (progn (setf *player-x* (+ ud *player-x*))
-                          (setf *player-y* (+ lr *player-y*)))))
+	  (if (equal *b1* (collides (+ *player-x* ud) (+ *player-y* lr)))
+	      (push-block ud lr)
+	      (if (collides (+ ud *player-x*) (+ lr *player-y*))
+		 ()
+                 (progn (setf *player-x* (+ ud *player-x*))
+                        (setf *player-y* (+ lr *player-y*))))))
 
 (defun collides (x y)
   (if (aref *block-map* x y)
-     '(t)
+     (aref *block-map* x y)
      ()))
+
+(defun push-block (ud lr)
+  (if (collides (+ ud ud *player-x*) (+ lr lr *player-y*))
+    ()
+    (progn (rotatef (aref *block-map* (+ ud *player-x*) (+ lr *player-y*)) (aref *block-map* (+ ud ud *player-x*) (+ lr lr *player-y*)))
+           (move-player ud lr))))
 
 (defun draw-floor (x y)
   (gamekit:draw-image (gamekit:vec2 (* 16 y) (* 16 x)) :sprite-sheet
