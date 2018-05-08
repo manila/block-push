@@ -18,7 +18,7 @@
 (setf *block-map* (make-array '(9 9)
   :initial-contents `(
   (,*w1* ,*w2* ,*w3* ,*w1* ,'nil ,*w3* ,*w1* ,*w2* ,*w3*)
-  (,*w1* ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,'nil ,*w3*)
+  (,*w1* ,'nil ,'nil ,'nil ,*b1* ,'nil ,'nil ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,*b1* ,*b1* ,*b1* ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,'nil ,*b1* ,'nil ,*b1* ,'nil ,*w3*)
@@ -61,8 +61,11 @@
 (defun push-block (ud lr)
   (if (collides (+ ud ud *player-x*) (+ lr lr *player-y*))
     ()
-    (progn (rotatef (aref *block-map* (+ ud *player-x*) (+ lr *player-y*)) (aref *block-map* (+ ud ud *player-x*) (+ lr lr *player-y*)))
-           (move-player ud lr))))
+    (progn 
+       (rotatef 
+           (aref *block-map* (+ ud *player-x*) (+ lr *player-y*)) 
+           (aref *block-map* (+ ud ud *player-x*) (+ lr lr *player-y*)))
+       (move-player ud lr))))
 
 (defun draw-floor (x y)
   (gamekit:draw-image (gamekit:vec2 (* 16 y) (* 16 x)) :sprite-sheet
