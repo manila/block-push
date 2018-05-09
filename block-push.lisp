@@ -10,14 +10,19 @@
 (defparameter *w3* (gamekit:vec2 32 224))
 (defparameter *f1* (gamekit:vec2 0 208))
 (defparameter *f2* (gamekit:vec2 16 208))
+(defparameter *f3* (gamekit:vec2 32 208))
 (defparameter *b1* (gamekit:vec2 0 240))
 (defparameter *b2* (gamekit:vec2 16 240))
 (defparameter *player-sprite* (gamekit:vec2 0 192))
+(defparameter *player-sprite-up* (gamekit:vec2 16 192))
+(defparameter *player-sprite-down* (gamekit:vec2 0 192))
+(defparameter *player-sprite-right* (gamekit:vec2 32 192))
+(defparameter *player-sprite-left* (gamekit:vec2 48 192))
 (defvar *player-x* 4)
 (defvar *player-y* 3)
 (setf *block-map* (make-array '(9 9)
   :initial-contents `(
-  (,*w1* ,*w2* ,*w3* ,*w1* ,'nil ,*w3* ,*w1* ,*w2* ,*w3*)
+  (,*w1* ,*w2* ,*w3* ,*w1* ,*f3* ,*w3* ,*w1* ,*w2* ,*w3*)
   (,*w1* ,'nil ,'nil ,'nil ,*b1* ,'nil ,'nil ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,*b1* ,*b1* ,*b1* ,*b1* ,'nil ,*w3*)
   (,*w1* ,'nil ,*b1* ,'nil ,'nil ,'nil ,*b1* ,'nil ,*w3*)
@@ -37,13 +42,13 @@
   (gamekit:bind-button :escape :pressed
     (lambda () (gamekit:stop)))
   (gamekit:bind-button :up :pressed
-    (lambda () (move-player 1 0)))
+    (lambda () (move-player 1 0) (setf *player-sprite* *player-sprite-up*)))
   (gamekit:bind-button :left :pressed
-    (lambda () (move-player 0 -1)))
+    (lambda () (move-player 0 -1) (setf *player-sprite* *player-sprite-left*)))
   (gamekit:bind-button :right :pressed
-    (lambda () (move-player 0 1)))
+    (lambda () (move-player 0 1) (setf *player-sprite* *player-sprite-right*)))
   (gamekit:bind-button :down :pressed
-    (lambda () (move-player -1 0))))
+    (lambda () (move-player -1 0) (setf *player-sprite* *player-sprite-down*))))
 
 (defun move-player(ud lr)
 	  (if (equal *b1* (collides (+ *player-x* ud) (+ *player-y* lr)))
