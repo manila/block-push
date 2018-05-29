@@ -15,14 +15,14 @@
 ;;; Position of sprite on sprites sheet starting in bottom left corner
 
 ;; sprites to draw the "map"
-(defparameter *w1* (gamekit:vec2 0 224))  ; wall varient 1
+(defparameter *w1* (gamekit:vec2 0 224))  ; wall variant 1
 (defparameter *w2* (gamekit:vec2 16 224)) ; wall variant 2
-(defparameter *w3* (gamekit:vec2 32 224)) ; wall varient 3
-(defparameter *f1* (gamekit:vec2 0 208))  ; floor varient 1
-(defparameter *f2* (gamekit:vec2 16 208)) ; floor varient 2
-(defparameter *f3* (gamekit:vec2 32 208)) ; floor varient 3
-(defparameter *b1* (gamekit:vec2 0 240))  ; block varient 1
-(defparameter *b2* (gamekit:vec2 16 240)) ; block varient 2
+(defparameter *w3* (gamekit:vec2 32 224)) ; wall variant 3
+(defparameter *f1* (gamekit:vec2 0 208))  ; floor variant 1
+(defparameter *f2* (gamekit:vec2 16 208)) ; floor variant 2
+(defparameter *f3* (gamekit:vec2 32 208)) ; floor variant 3
+(defparameter *b1* (gamekit:vec2 0 240))  ; block variant 1
+(defparameter *b2* (gamekit:vec2 16 240)) ; block variant 2
 
 ;; sprites to draw player and indicate direction  
 (defparameter *player-sprite* (gamekit:vec2 0 192))        ; player facing front/up
