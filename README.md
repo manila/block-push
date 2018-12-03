@@ -1,14 +1,25 @@
 # Block Push
 
-Originally started as my entry for the 2018 LISP Game Jam
+Originally started as my entry for the 2018 LISP Game Jam, now I use this to tinker with LISP.
 
 ![block pushing demo](demo.gif)
+
+The above level might be too easy ;) 
 
 # Install
 
 **Depends**
-- sbcl
-- trivial-gamekit
+- [sbcl](http://www.sbcl.org/)
+- [trivial-gamekit](https://github.com/borodust/trivial-gamekit)
+
+1. Install dependencies
+```sudo apt-get install sbcl```
+
+2. Clone the repository
+```git clone https://github.com/manila/block-push```
+
+3. Enter ```sbcl``` and load block-push.lisp ```(load "cloned_repo_dir/block-push.lisp")```
+
 
 # Objective
 
@@ -22,6 +33,8 @@ You can only push one block at a time so you will need to use some strategy to e
 
 # TODO
 
+- Main Menu
+- Help Menu
 - Design some challenging maps with progressive difficulty
 - Scoring
 
