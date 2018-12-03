@@ -33,8 +33,10 @@ You can only push one block at a time so you will need to use some strategy to e
 
 # TODO
 
+- Save game state
 - Main Menu
 - Help Menu
-- Design some challenging maps with progressive difficulty
+- Map editor
+- Challenging levels
 - Scoring
 
